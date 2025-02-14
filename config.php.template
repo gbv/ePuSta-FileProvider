@@ -1,0 +1,12 @@
+<?php
+
+/* Configfile - Template
+ * @author Paul Grimm <paul.grimm@gbv...>
+ *
+ * Copy to config.php and fill the properies.
+ */
+$config = array (
+    'epustalog_dir' => '',
+    'IP Range' => ''
+);
+?>
