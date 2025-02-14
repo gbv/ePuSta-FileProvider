@@ -37,7 +37,7 @@ function loadAndCheckConfig () {
     if ( is_array(($config['IP Ranges'])) ) {
         $isInRange=false;
         foreach ($config['IP Ranges'] as $IP_Range) {
-            if ((ip_in_range($_SERVER['REMOTE_ADDR'],$config['IP Range'])) ) $isInRange=true;
+            if ((ip_in_range($_SERVER['REMOTE_ADDR'],$IP_Range)) ) $isInRange=true;
         }
         if (! $isInRange) {
             $msg['msg']="Error: IP not in IP Range.";
