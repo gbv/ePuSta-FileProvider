@@ -34,10 +34,18 @@ function loadAndCheckConfig () {
         exit();
     }
 
-    if (! ($config['IP Range'] != '') && (ip_in_range($_SERVER['REMOTE_ADDR'],$config['IP Range'])) ) {
-        $msg['msg']="Error: IP not in IP Range.";
-        
+    if ( is_array(($config['IP Range'])) ) {
+        $isInRange=false;
+        foreach ($config['IP Range'] as $IP_Range) {
+            if ((ip_in_range($_SERVER['REMOTE_ADDR'],$config['IP Range'])) ) $isInRange=true;
+        }
+        if (! $isInRange) {
+            $msg['msg']="Error: IP not in IP Range.";
+        }
+    } else {
+        $msg['msg']="Error: Property 'IP Range' is malformed (not an array). Set i.e. ['127.0.0.0/24']";
     }
+    
     if (isset($msg['msg'])) {
         sendArrayAsJson($msg);
         exit();
