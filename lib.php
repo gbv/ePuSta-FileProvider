@@ -34,9 +34,9 @@ function loadAndCheckConfig () {
         exit();
     }
 
-    if ( is_array(($config['IP Range'])) ) {
+    if ( is_array(($config['IP Ranges'])) ) {
         $isInRange=false;
-        foreach ($config['IP Range'] as $IP_Range) {
+        foreach ($config['IP Ranges'] as $IP_Range) {
             if ((ip_in_range($_SERVER['REMOTE_ADDR'],$config['IP Range'])) ) $isInRange=true;
         }
         if (! $isInRange) {
