@@ -25,6 +25,7 @@ function ip_in_range( $ip, $range ) {
 }
 
 function loadAndCheckConfig () {
+    global $config;
     $msg=array();
     if (is_file('config.php')) {
         include ('config.php');
